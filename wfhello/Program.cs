@@ -1,21 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
-namespace wfhello
+namespace FormWithButton
 {
-    static class Program
+    public class Form1 : Form
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
+        public Button button1;
+        public Form1()
+        {
+            button1 = new Button();
+            button1.Size = new Size(40, 40);
+            button1.Location = new Point(30, 30);
+            button1.Text = "Click me";
+            this.Controls.Add(button1);
+            button1.Click += new EventHandler(button1_Click);
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Hello World");
+        }
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
         }
     }
